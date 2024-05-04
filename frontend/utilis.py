@@ -1,10 +1,17 @@
 import requests
 import os
+import requests
+import json
+from datetime import datetime
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(".env")
 
 HUGGING_FACE_TOKEN = os.getenv("HUGGING_FACE_TOKEN")
+# Strapi API endpoint
+STRAPI_URL = "http://localhost:1337/api"
+
+
 
 API_URL = "https://api-inference.huggingface.co/models/facebook/mbart-large-50-many-to-one-mmt"
 headers = {"Authorization": f"Bearer {HUGGING_FACE_TOKEN}"}
@@ -25,5 +32,25 @@ def translate(inputs):
     return output[0]["generated_text"]
 
 
-translate(text)
+def save_translation(input_text, translated_text):
+    data = {
+        "data": {
+            "input_text": input_text,
+            "translated_text": translated_text,
+            "translation_date": datetime.now().isoformat(),
+        }
+    }
 
+    response = requests.post(
+        f"{STRAPI_URL}/translations",
+        headers={"Content-Type": "application/json"},
+        data=json.dumps(data),
+    )
+    return response.json()
+
+
+def get_history():
+    response = requests.get(f"{STRAPI_URL}/translations")
+    if response.status_code == 200:
+        return response.json()
+    return []
