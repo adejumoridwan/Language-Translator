@@ -4,13 +4,13 @@ import json
 from datetime import datetime
 from dotenv import load_dotenv
 
-text = "संयुक्त राष्ट्र के प्रमुख का कहना है कि सीरिया में कोई सैन्य समाधान नहीं है"
+
 load_dotenv(".env")
 
 HUGGING_FACE_TOKEN = os.getenv("HUGGING_FACE_TOKEN")
 
 # Strapi API endpoint
-STRAPI_URL = "https://miraculous-confidence-02c5012cfa.strapiapp.com"
+STRAPI_URL = "https://miraculous-confidence-02c5012cfa.strapiapp.com/api"
 
 
 API_URL = "https://api-inference.huggingface.co/models/facebook/mbart-large-50-many-to-one-mmt"
@@ -40,7 +40,7 @@ def save_translation(input_text, translated_text):
     }
 
     response = requests.post(
-        f"{STRAPI_URL}/api/translations",
+        f"{STRAPI_URL}/translations",
         headers={"Content-Type": "application/json"},
         data=json.dumps(data),
     )
@@ -48,7 +48,7 @@ def save_translation(input_text, translated_text):
 
 
 def get_history():
-    response = requests.get(f"{STRAPI_URL}/api/translations")
+    response = requests.get(f"{STRAPI_URL}/translations")
     if response.status_code == 200:
         return response.json()
     return []
