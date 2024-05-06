@@ -53,3 +53,9 @@ def get_history():
     if response.status_code == 200:
         return response.json()
     return []
+
+
+save_translation(
+    "संयुक्त राष्ट्र के प्रमुख का कहना है कि सीरिया में कोई सैन्य समाधान नहीं है",
+    translate("संयुक्त राष्ट्र के प्रमुख का कहना है कि सीरिया में कोई सैन्य समाधान नहीं है"),
+)
