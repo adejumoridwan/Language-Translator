@@ -2,9 +2,8 @@ from utilis import translate, get_history, save_translation
 import streamlit as st
 
 
-
 def main():
-    st.title("Language Translator to English with History")
+    st.title("Language Translator to English")
 
     input_text = st.text_area("Enter the text you want to translate:", height=150)
     if st.button("Translate"):

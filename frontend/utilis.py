@@ -1,6 +1,5 @@
 import requests
 import os
-import requests
 import json
 from datetime import datetime
 from dotenv import load_dotenv
@@ -8,15 +7,15 @@ from dotenv import load_dotenv
 load_dotenv(".env")
 
 HUGGING_FACE_TOKEN = os.getenv("HUGGING_FACE_TOKEN")
-# Strapi API endpoint
-STRAPI_URL = "http://localhost:1337/api"
 
+# Strapi API endpoint
+STRAPI_URL = "https://miraculous-confidence-02c5012cfa.strapiapp.com"
 
 
 API_URL = "https://api-inference.huggingface.co/models/facebook/mbart-large-50-many-to-one-mmt"
 headers = {"Authorization": f"Bearer {HUGGING_FACE_TOKEN}"}
 
-text = "संयुक्त राष्ट्र के प्रमुख का कहना है कि सीरिया में कोई सैन्य समाधान नहीं है"
+# text = "संयुक्त राष्ट्र के प्रमुख का कहना है कि सीरिया में कोई सैन्य समाधान नहीं है"
 
 
 def translate(inputs):
