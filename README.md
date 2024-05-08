@@ -1,15 +1,15 @@
 # Weather Forecast Application
 
-**Description:**
+## Description:
 
 This project builds a robust and interactive web application that leverages the strengths of Streamlit, Strapi and a machine learning model from Hugging Face to translate any language to English.
 
-**Key Features:**
+## Key Features:
 - **Streamlit Frontend**- A streamlit frontend that allows users to give input and see the output.
 - **Hugging Face Model**- An Hugging Face model that translates given text to English language.
 - **Strapi Backend** - A Strapi backend that stores users input and output in a database, this allows users to see previous inputs and outputs.
 
-**Getting Started:**
+## Getting Started:
 
 1. **Prerequisites:**
    - Basic understanding of Python programming.
