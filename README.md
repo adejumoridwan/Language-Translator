@@ -1,4 +1,4 @@
-# Languate Translator
+# Language Translator
 
 ## Description:
 
